@@ -2,7 +2,7 @@
   "mcpServers": {
     "bambu": {
       "command": "node",
-      "args": ["/Users/dev/projects/bambu/dist/server.js"]
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/dist/server.js"]
     }
   }
 }

@@ -48,11 +48,23 @@ Requires [Bambu Studio](https://bambulab.com/en/download/studio) and OpenSCAD:
 
 ```bash
 brew install --cask openscad
-npm install && npm run build
 ```
 
-`.mcp.json` in this directory registers the server for Claude Code sessions
-started here. Approve it when prompted, then ask for a part.
+Then clone and install. `npm install` builds the server too, via a `prepare`
+script, so there is no separate build step:
+
+```bash
+npm install
+```
+
+`.mcp.json` registers the server for Claude Code sessions started in this
+directory. Approve it when prompted, then ask for a part.
+
+Start Claude Code **from the repository root** -- the server path is written as
+`${CLAUDE_PROJECT_DIR:-.}/dist/server.js`. Claude Code sets `CLAUDE_PROJECT_DIR`
+in the spawned server's environment rather than its own, so for a project-scoped
+`.mcp.json` the `:-.` fallback is what actually resolves, and it resolves against
+the working directory.
 
 ### Paths and overrides
 
